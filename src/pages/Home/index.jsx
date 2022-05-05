@@ -14,7 +14,7 @@ class Home extends Component {
     return (
       <div>
         <h1>Home</h1>
-        <NavLink className={getActiveClassName} to="/login">
+        <NavLink onClick={() => localStorage.setItem("token", false)} className={getActiveClassName} to="/login">
           Log out
         </NavLink>
       </div>

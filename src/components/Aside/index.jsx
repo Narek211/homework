@@ -32,6 +32,9 @@ class Aside extends Component {
           <NavLink className={getActiveClassName} to="/contacts">
             Contacts
           </NavLink>
+          <NavLink className={getActiveClassName} to="/users">
+            Users
+          </NavLink>
           {!token && (
             <>
               <NavLink className={getActiveClassName} to="/register">

@@ -1,14 +1,15 @@
-import React, { Component } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Aside from './components/Aside';
-import Home from './pages/Home';
-import About from './pages/About';
-import Contacts from './pages/Contacts';
-import styles from './App.module.scss';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import PrivateRoute from './components/PrivateRoute';
-import PublicRoute from './components/PublicRoute';
+import React, { Component } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Aside from "./components/Aside";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Contacts from "./pages/Contacts";
+import styles from "./App.module.scss";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import PrivateRoute from "./components/PrivateRoute";
+import PublicRoute from "./components/PublicRoute";
+import Users from "./pages/Users";
 
 class App extends Component {
   render() {
@@ -49,6 +50,19 @@ class App extends Component {
                   <Aside />
                   <div className={styles.content}>
                     <Contacts />
+                  </div>
+                </div>
+              </PrivateRoute>
+            )}
+          />
+          <Route
+            path="/users"
+            element={(
+              <PrivateRoute>
+                <div className={styles.container}>
+                  <Aside />
+                  <div className={styles.content}>
+                    <Users />
                   </div>
                 </div>
               </PrivateRoute>
