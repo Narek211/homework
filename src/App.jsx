@@ -10,6 +10,7 @@ import Register from "./pages/Register";
 import PrivateRoute from "./components/PrivateRoute";
 import PublicRoute from "./components/PublicRoute";
 import Users from "./pages/Users";
+import User from "./pages/User";
 
 class App extends Component {
   render() {
@@ -18,7 +19,7 @@ class App extends Component {
         <Routes>
           <Route
             path="/"
-            element={(
+            element={
               <PrivateRoute>
                 <div className={styles.container}>
                   <Aside />
@@ -27,11 +28,11 @@ class App extends Component {
                   </div>
                 </div>
               </PrivateRoute>
-            )}
+            }
           />
           <Route
             path="/about"
-            element={(
+            element={
               <PrivateRoute>
                 <div className={styles.container}>
                   <Aside />
@@ -40,11 +41,11 @@ class App extends Component {
                   </div>
                 </div>
               </PrivateRoute>
-            )}
+            }
           />
           <Route
             path="/contacts"
-            element={(
+            element={
               <PrivateRoute>
                 <div className={styles.container}>
                   <Aside />
@@ -53,11 +54,11 @@ class App extends Component {
                   </div>
                 </div>
               </PrivateRoute>
-            )}
+            }
           />
           <Route
             path="/users"
-            element={(
+            element={
               <PrivateRoute>
                 <div className={styles.container}>
                   <Aside />
@@ -66,11 +67,24 @@ class App extends Component {
                   </div>
                 </div>
               </PrivateRoute>
-            )}
+            }
+          />
+          <Route
+            element={
+              <PrivateRoute>
+                <div className={styles.container}>
+                  <Aside click={this.change} />
+                  <div className={styles.content}>
+                    <User />
+                  </div>
+                </div>
+              </PrivateRoute>
+            }
+            path="/users/:id"
           />
           <Route
             path="/register"
-            element={(
+            element={
               <PublicRoute>
                 <div className={styles.container}>
                   <Aside />
@@ -79,15 +93,15 @@ class App extends Component {
                   </div>
                 </div>
               </PublicRoute>
-            )}
+            }
           />
           <Route
             path="/login"
-            element={(
+            element={
               <PublicRoute>
                 <Login />
               </PublicRoute>
-            )}
+            }
           />
         </Routes>
       </BrowserRouter>

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
+import styles from "./Users.module.scss";
 import { getUsers } from "../../api/users";
-
+import { Link } from "react-router-dom";
 class Users extends Component {
   constructor() {
     super();
@@ -10,16 +11,21 @@ class Users extends Component {
   }
 
   async componentDidMount() {
-    const data = await getUsers();
-    this.setState({ users: data });
+    const users = await getUsers();
+    this.setState({ users });
   }
 
   render() {
     const { users } = this.state;
+
     return (
       <div>
-        {users.map((item) => (
-          <h2 key={item.id}>{item.name}</h2>
+        {users.map(({ id, name }, index) => (
+          <Link key={id} to={`/users/${id}`}>
+            <h2 className={styles.h2}>
+              {index + 1}. {name}
+            </h2>
+          </Link>
         ))}
       </div>
     );
